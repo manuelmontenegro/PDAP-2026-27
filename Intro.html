@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Manuel Montenegro Montes Dpto. de Sistemas Informáticos y Computación Facultad de Informática Universidad Complutense de Madrid">
+  <title>Programación Declarativa Aplicada</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="dist/reset.css">
+  <link rel="stylesheet" href="dist/reveal.css">
+  <link rel="stylesheet" href="css/nnfx-light.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        background-color: #ffffff;
+        color: #a0a0a0;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #a0a0a0;  padding-left: 4px; }
+    div.sourceCode
+      { color: #1f1c1b; background-color: #ffffff; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #1f1c1b; } /* Normal */
+    code span.al { color: #bf0303; background-color: #f7e6e6; font-weight: bold; } /* Alert */
+    code span.an { color: #ca60ca; } /* Annotation */
+    code span.at { color: #0057ae; } /* Attribute */
+    code span.bn { color: #b08000; } /* BaseN */
+    code span.bu { color: #644a9b; font-weight: bold; } /* BuiltIn */
+    code span.cf { color: #1f1c1b; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #924c9d; } /* Char */
+    code span.cn { color: #aa5500; } /* Constant */
+    code span.co { color: #898887; } /* Comment */
+    code span.cv { color: #0095ff; } /* CommentVar */
+    code span.do { color: #607880; } /* Documentation */
+    code span.dt { color: #0057ae; } /* DataType */
+    code span.dv { color: #b08000; } /* DecVal */
+    code span.er { color: #bf0303; text-decoration: underline; } /* Error */
+    code span.ex { color: #0095ff; font-weight: bold; } /* Extension */
+    code span.fl { color: #b08000; } /* Float */
+    code span.fu { color: #644a9b; } /* Function */
+    code span.im { color: #ff5500; } /* Import */
+    code span.in { color: #b08000; } /* Information */
+    code span.kw { color: #1f1c1b; font-weight: bold; } /* Keyword */
+    code span.op { color: #1f1c1b; } /* Operator */
+    code span.ot { color: #006e28; } /* Other */
+    code span.pp { color: #006e28; } /* Preprocessor */
+    code span.re { color: #0057ae; background-color: #e0e9f8; } /* RegionMarker */
+    code span.sc { color: #3daee9; } /* SpecialChar */
+    code span.ss { color: #ff5500; } /* SpecialString */
+    code span.st { color: #bf0303; } /* String */
+    code span.va { color: #0057ae; } /* Variable */
+    code span.vs { color: #bf0303; } /* VerbatimString */
+    code span.wa { color: #bf0303; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="css/dial.css" id="theme">
+    <style>
+  :root {
+    --color-tema: #9c561d;
+  }
+    </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-image="img/BrownBackground.png" class="center">
+  <h1 class="title">Programación Declarativa Aplicada</h1>
+<div id="author-container">
+<div class="author">
+<strong>Manuel Montenegro Montes</strong><br>Dpto. de Sistemas
+Informáticos y Computación<br>Facultad de Informática<br>Universidad
+Complutense de Madrid
+</div>
+</div>
+</section>
+
+<section>
+<section id="qué-es-la-programación-declarativa"
+class="title-slide slide level1 center"
+data-background-image="img/BrownBackground.png">
+<h1 class="center" data-background-image="img/BrownBackground.png">¿Qué
+es la programación declarativa?</h1>
+
+</section>
+<section id="qué-es-la-programación-declarativa-1" class="slide level2">
+<h2>¿Qué es la programación declarativa?</h2>
+<p>Es un paradigma (estilo) de programación en el que el programador/a
+expresa el resultado esperado de un programa sin indicar cómo
+calcularlo.</p>
+<div class="info_box fragment" style="font-weight:normal">
+<p>«<strong>Qué</strong> calcular» en lugar de <br/>
+«<strong>cómo</strong> calcularlo»</p>
+</div>
+</section>
+<section id="ejemplo-1" class="slide level2">
+<h2>Ejemplo 1</h2>
+<ul>
+<li><p>Supongamos que tenemos una lista de personas, cada una con una
+edad y una lista de viviendas en propiedad.</p>
+<ul>
+<li>Una misma persona puede aparecer varias veces en la lista, cada vez
+con distintas viviendas.</li>
+</ul></li>
+<li><p>Cada propiedad está situada en un municipio.</p></li>
+</ul>
+<div class="color_tema" style="text-align:center">
+<p><em>¿Cuántas personas mayores de 50 años tienen una vivienda en el
+municipio de Lucena?</em></p>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="solución-imperativa-en-java">Solución imperativa en Java</h3>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">int</span> <span class="fu">numPersonasLucena</span><span class="op">(</span><span class="bu">List</span><span class="op">&lt;</span>Persona<span class="op">&gt;</span> personas<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">Set</span><span class="op">&lt;</span>Persona<span class="op">&gt;</span> personasLucena <span class="op">=</span> <span class="kw">new</span> <span class="bu">HashSet</span><span class="op">&lt;&gt;();</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span>Persona p <span class="op">:</span> personas<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>p<span class="op">.</span><span class="fu">getEdad</span><span class="op">()</span> <span class="op">&gt;</span> <span class="dv">50</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> <span class="op">(</span>Vivienda v <span class="op">:</span> p<span class="op">.</span><span class="fu">getViviendas</span><span class="op">())</span> <span class="op">{</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>v<span class="op">.</span><span class="fu">getMunicipio</span><span class="op">().</span><span class="fu">equals</span><span class="op">(</span><span class="st">&quot;Lucena&quot;</span><span class="op">))</span> <span class="op">{</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>          personasLucena<span class="op">.</span><span class="fu">add</span><span class="op">(</span>p<span class="op">.</span><span class="fu">getId</span><span class="op">());</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>          <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> personasLucena<span class="op">.</span><span class="fu">size</span><span class="op">();</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</section>
+<section class="slide level2">
+
+<h3 id="solución-declarativa-en-java">Solución declarativa en Java</h3>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">record</span> <span class="fu">Person</span> <span class="op">(</span><span class="dt">int</span> id<span class="op">,</span> <span class="dt">int</span> edad<span class="op">,</span> Stream<span class="op">&lt;</span>Vivienda<span class="op">&gt;</span> viviendas<span class="op">,</span> <span class="kw">...</span><span class="op">)</span> <span class="op">{}</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">record</span> <span class="fu">Vivienda</span> <span class="op">(</span><span class="bu">String</span> municipio<span class="op">,</span> <span class="kw">...</span><span class="op">)</span> <span class="op">{}</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">int</span> <span class="fu">numPersonasLucena</span><span class="op">(</span><span class="bu">List</span><span class="op">&lt;</span>Persona<span class="op">&gt;</span> personas<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> personas<span class="op">.</span><span class="fu">stream</span><span class="op">()</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">filter</span><span class="op">(</span>p <span class="op">-&gt;</span> p<span class="op">.</span><span class="fu">edad</span><span class="op">()</span> <span class="op">&gt;</span> <span class="dv">50</span><span class="op">)</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">filter</span><span class="op">(</span>p <span class="op">-&gt;</span> p<span class="op">.</span><span class="fu">viviendas</span><span class="op">().</span><span class="fu">anyMatch</span><span class="op">(</span>v <span class="op">-&gt;</span> v<span class="op">.</span><span class="fu">municipio</span><span class="op">().</span><span class="fu">equals</span><span class="op">(</span><span class="st">&quot;Lucena&quot;</span><span class="op">)))</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">map</span><span class="op">(</span>p <span class="op">-&gt;</span> p<span class="op">.</span><span class="fu">id</span><span class="op">)</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">distinct</span><span class="op">()</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">count</span><span class="op">()</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="fragment">
+<h3 id="solución-declarativa-en-c">Solución declarativa en C#</h3>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode csharp"><code class="sourceCode cs"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">int</span> <span class="fu">NumPersonasLucena</span><span class="op">(</span>List<span class="op">&lt;</span>Persona<span class="op">&gt;</span> personas<span class="op">)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">return</span> personas</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">Where</span><span class="op">(</span>p <span class="op">=&gt;</span> p<span class="op">.</span><span class="fu">Edad</span> <span class="op">&gt;</span> <span class="dv">50</span><span class="op">)</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">Where</span><span class="op">(</span>p <span class="op">=&gt;</span> p<span class="op">.</span><span class="fu">Viviendas</span><span class="op">.</span><span class="fu">Any</span><span class="op">(</span>v <span class="op">=&gt;</span> v<span class="op">.</span><span class="fu">Municipio</span> <span class="op">==</span> <span class="st">&quot;Lucena&quot;</span><span class="op">))</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">Select</span><span class="op">(</span>p <span class="op">=&gt;</span> p<span class="op">.</span><span class="fu">Id</span><span class="op">)</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">Distinct</span><span class="op">()</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">Count</span><span class="op">();</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="solución-declarativa-en-javascript">Solución declarativa en
+JavaScript</h3>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">numPersonasLucena</span>(personas) {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="kw">new</span> <span class="bu">Set</span>(</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        personas</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">filter</span>(p <span class="kw">=&gt;</span> p<span class="op">.</span><span class="at">edad</span> <span class="op">&gt;</span> <span class="dv">50</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">filter</span>(p <span class="kw">=&gt;</span> p<span class="op">.</span><span class="at">viviendas</span><span class="op">.</span><span class="fu">some</span>(v <span class="kw">=&gt;</span> v<span class="op">.</span><span class="at">municipio</span> <span class="op">===</span> <span class="st">&quot;Lucena&quot;</span>))</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">map</span>(p <span class="kw">=&gt;</span> p<span class="op">.</span><span class="at">id</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    )<span class="op">.</span><span class="at">size</span><span class="op">;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="fragment">
+<h3 id="solución-declarativa-en-elixir">Solución declarativa en
+Elixir</h3>
+<div class="elixir elixir_block" style="font-size:60%">
+<p><strong>def</strong> num_personas_lucena(personas)
+<strong>do</strong><br>  <strong>for</strong> p &lt;- personas, p.edad
+&gt; <span class="number">50</span>, any?(p.viviendas, &amp;(&amp;<span
+class="number">1</span>.municipio == <span
+class="string">"Lucena"</span>)), uniq<span class="atom">:</span> <span
+class="type">true</span>
+<strong>do</strong><br>    p.id<br>  <strong>end</strong> |&gt;
+length()<br><strong>end</strong></p>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="solución-declarativa">Solución declarativa</h3>
+<ul style="list-style:none;padding:0;margin:0">
+<li class="hands_up fragment">
+Enfoque de más alto nivel
+</li>
+<li class="hands_up fragment">
+Más fácil de entender <span class="fragment">(si conoces el lenguaje
+😅)</span>
+</li>
+<li class="hands_down fragment">
+(A veces) más ineficiente
+</li>
+</ul>
+</section>
+<section id="paradigmas-de-programación-declarativa"
+class="slide level2">
+<h2>Paradigmas de programación declarativa</h2>
+<ul>
+<li><strong>Programación funcional</strong> (Haskell, Erlang, Elixir,
+Scala)
+<ul>
+<li>Los programas se definen mediante funciones «matemáticas».</li>
+</ul></li>
+<li><strong>Programación basada en restricciones</strong> (Oz, MiniZinc)
+<ul>
+<li>Se especifican las condiciones que ha de cumplir la solución a un
+determinado problema.</li>
+</ul></li>
+<li><strong>Programación lógica</strong> (Prolog)
+<ul>
+<li>Los programas se definen mediante predicados lógicos.</li>
+</ul></li>
+<li><strong>Lenguajes específicos de dominio</strong> (SQL, XQuery,
+HTML)</li>
+</ul>
+</section></section>
+<section>
+<section id="qué-es-la-programación-funcional"
+class="title-slide slide level1 center"
+data-background-image="img/BrownBackground.png">
+<h1 class="center" data-background-image="img/BrownBackground.png">¿Qué
+es la programación funcional?</h1>
+
+</section>
+<section id="qué-es-la-programación-funcional-1" class="slide level2">
+<h2>¿Qué es la programación funcional?</h2>
+<ul>
+<li>La <strong>programación funcional</strong> trata los programas como
+una composición de <strong>funciones</strong>.</li>
+<li>Las funciones se consideran <strong>valores</strong>, como cualquier
+otro tipo de dato:
+<ul>
+<li>Se pueden pasar como argumentos, se pueden devolver como resultado y
+se pueden combinar para construir operaciones más complejas.</li>
+</ul></li>
+<li>Otra característica importante de la programación funcional pura es
+la <strong>transparencia referencial</strong>, obtenida mediante la
+inmutabilidad.
+<ul>
+<li>Esto hace que sea más fácil razonar sobre los programas.</li>
+</ul></li>
+</ul>
+</section>
+<section id="transparencia-referencial" class="slide level2">
+<h2>Transparencia referencial</h2>
+<ul>
+<li><p>Una expresión es <strong>referencialmente transparente</strong>
+cuando podemos sustituirla por su resultado sin cambiar el
+comportamiento del programa.</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> <span class="fu">cuadrado</span><span class="op">(</span><span class="dt">int</span> x<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">*</span> x<span class="op">;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> resultado <span class="op">=</span> <span class="fu">cuadrado</span><span class="op">(</span><span class="dv">5</span><span class="op">)</span> <span class="op">*</span> <span class="fu">cuadrado</span><span class="op">(</span><span class="dv">5</span><span class="op">);</span></span></code></pre></div></li>
+<li><p>Podemos sustituir <code>cuadrado(5)</code> por
+<code>25</code>:</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> resultado <span class="op">=</span> <span class="dv">25</span> <span class="op">*</span> <span class="dv">25</span><span class="op">;</span></span></code></pre></div></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<ul>
+<li><p>Ahora consideramos otra función:</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">static</span> <span class="dt">final</span> <span class="dt">int</span> variable_externa <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> <span class="fu">otra</span><span class="op">(</span><span class="dt">int</span> x<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">*</span> variable_externa<span class="op">;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> resultado <span class="op">=</span> <span class="fu">otra</span><span class="op">(</span><span class="dv">5</span><span class="op">)</span> <span class="op">*</span> <span class="fu">otra</span><span class="op">(</span><span class="dv">5</span><span class="op">);</span></span></code></pre></div></li>
+<li><p>La expresión <code>otra(5)</code> sigue siendo referencialmente
+transparente. Podemos reemplazarla por <code>10</code>:</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> resultado <span class="op">=</span> <span class="dv">10</span> <span class="op">*</span> <span class="dv">10</span><span class="op">;</span></span></code></pre></div></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<ul>
+<li><p>¿Qué pasaría con la siguiente expresión?</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">static</span> <span class="dt">int</span> variable_externa <span class="op">=</span> <span class="dv">2</span><span class="op">;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> <span class="fu">otra</span><span class="op">(</span><span class="dt">int</span> x<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    variable_externa<span class="op">++;</span>         <span class="co">// &lt;- Efecto lateral: modificar variable externa</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x <span class="op">*</span> variable_externa<span class="op">;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> resultado <span class="op">=</span> <span class="fu">otra</span><span class="op">(</span><span class="dv">5</span><span class="op">)</span> <span class="op">*</span> <span class="fu">otra</span><span class="op">(</span><span class="dv">5</span><span class="op">);</span></span></code></pre></div></li>
+<li><p>La expresión <code>otra(5)</code> se evalúa a un valor distinto
+en cada una de sus apariciones.</p></li>
+</ul>
+<div class="info_box">
+<p>⚠️ Los efectos laterales (en este caso, modificación de variables
+externas) hacen que la propiedad de transparencia referencial se
+pierda.</p>
+</div>
+</section></section>
+<section>
+<section id="la-programación-funcional-en-la-industria"
+class="title-slide slide level1 center"
+data-background-image="img/BrownBackground.png">
+<h1 class="center" data-background-image="img/BrownBackground.png"> La
+programación funcional en la industria </h1>
+
+</section>
+<section id="lenguajes-más-usados-stack-overflow-developer-survey-2025"
+class="slide level2">
+<h2>Lenguajes más usados (<em>Stack Overflow developer survey
+2025</em>)</h2>
+<p style="text-align:center">
+<img src="Intro/stack_survey.png" width="70%"/>
+</p>
+<div class="fragment">
+<blockquote style="background-color:#FFC;font-size:80%;padding:1em">
+« Existen dos tipos de lenguajes: aquellos de los que la gente se queja,
+y aquellos que nadie usa. »
+</blockquote>
+<p style="text-align:center">
+Bjarne Stroustrup (creador de C++)
+</p>
+</div>
+</section>
+<section id="qué-lenguajes-son-los-más-admirados" class="slide level2">
+<h2>¿Qué lenguajes son los más «admirados»?</h2>
+<p>
+Stack Overflow Developer Survey 2025
+</p>
+<div class="fragment">
+<p style="color:#c09;font-style:italic;font-size:65%;">
+<em>¿De los lenguajes de programación en los que has trabajado durante
+el último año, en cuáles quieres trabajar durante el próximo año?</em>
+</p>
+<ol>
+<li>
+Rust (multiparadigma)
+</li>
+<li>
+Gleam (funcional / concurrente)
+</li>
+<li>
+Elixir (functional / concurrente)
+</li>
+</ol>
+</div>
+<div class="fragment">
+<p style="color:#c09;font-style:italic;font-size:65%;">
+<em>¿De los frameworks web en los que has trabajado durante el último
+año, en cuáles quieres trabajar durante el próximo año?</em>
+</p>
+<ol>
+<li>
+Phoenix (Elixir)
+</li>
+<li>
+Axum (Rust)
+</li>
+<li>
+Svelte (JS)
+</li>
+</ol>
+</div>
+</section>
+<section class="slide level2">
+
+<blockquote style="background-color:#FFC;font-size:80%;padding:1em">
+« A menudo se pronosticaba que algún día los lenguajes funcionales
+dominarían el mundo, pero eso no ha pasado aún. Los lenguajes
+funcionales más conocidos, como Haskell o Lisp, aún no están en el top
+10 de las listas de los lenguajes de programación más populares. Esas
+listas siguen estando copadas por los lenguajes imperativos
+tradicionales, como C, Java y C++. »
+</blockquote>
+<p style="text-align:center">
+Ivan Čukić
+</p>
+<div class="fragment">
+<p style="text-align:center">
+pero…
+</p>
+<blockquote style="background-color:#FFC;font-size:80%;padding:1em">
+«En lugar de aumentar la popularidad de los lenguajes funcionales, está
+pasando otra cosa: los lenguajes de programación populares han empezado
+a incorporar características inspiradas por los lenguajes de
+programación funcionales.»
+</blockquote>
+</div>
+</section></section>
+<section>
+<section id="qué-es-la-programación-con-restricciones"
+class="title-slide slide level1 center"
+data-background-image="img/BrownBackground.png">
+<h1 class="center" data-background-image="img/BrownBackground.png">¿Qué
+es la programación con restricciones?</h1>
+
+</section>
+<section id="ejemplo-el-problema-de-las-8-reinas" class="slide level2">
+<h2>Ejemplo: el problema de las 8 reinas</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>Tenemos un tablero de ajedrez de 8×8 casillas.</p></li>
+<li><p>Queremos colocar 8 reinas en ese tablero.</p></li>
+</ul>
+<p><span class="fragment"><strong>¿Cómo podemos colocar las reinas de
+manera que no se ataquen entre ellas?</strong></span></p>
+</div><div class="column"
+style="text-align:center; font-size: 0.6em; width: 20%">
+<p><img data-src="Intro/NReinas.png" /></p>
+</div>
+</div>
+</section>
+<section id="solución-imperativa-en-java-vuelta-atrás"
+class="slide level2">
+<h2>Solución imperativa en Java (vuelta atrás)</h2>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span><span class="op">(</span><span class="bu">String</span><span class="op">[]</span> args<span class="op">)</span> <span class="op">{</span> <span class="fu">resolver</span><span class="op">(</span><span class="dv">0</span><span class="op">);</span> <span class="op">}</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">void</span> <span class="fu">resolver</span><span class="op">(</span><span class="dt">int</span> fila<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>fila <span class="op">==</span> <span class="dv">8</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mostrarSolucion</span><span class="op">();</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> columna <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> columna <span class="op">&lt;</span> <span class="dv">8</span><span class="op">;</span> columna<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span><span class="fu">esFactible</span><span class="op">(</span>fila<span class="op">,</span> columna<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>                tablero<span class="op">[</span>fila<span class="op">]</span> <span class="op">=</span> columna<span class="op">;</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>                <span class="fu">resolver</span><span class="op">(</span>fila <span class="op">+</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="dt">static</span> <span class="dt">boolean</span> <span class="fu">esFactible</span><span class="op">(</span><span class="dt">int</span> fila<span class="op">,</span> <span class="dt">int</span> columna<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> fila<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>tablero<span class="op">[</span>i<span class="op">]</span> <span class="op">==</span> columna<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span><span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span><span class="op">(</span>tablero<span class="op">[</span>i<span class="op">]</span> <span class="op">-</span> columna<span class="op">)</span> <span class="op">==</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span><span class="op">(</span>i <span class="op">-</span> fila<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="kw">true</span><span class="op">;</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</section>
+<section id="solución-declarativa-minizinc" class="slide level2">
+<h2>Solución declarativa (MiniZinc)</h2>
+<pre class="text"><code>% q[i] = columna en la que está la reina de la fila i-ésima
+array[1..8] of var 1..8: q;  
+
+% No puede haber dos reinas en la misma columna
+constraint alldifferent(q);
+
+% No puede haber dos reinas en la misma diagonal
+constraint forall(i, j in 1..8 where i &lt; j) (
+    abs(q[i] - q[j]) != abs(i - j)
+);
+
+solve satisfy;
+
+output [
+    &quot;Fila &quot; ++ show(i) ++ &quot;: columna &quot; ++ show(q[i]) ++ &quot;\n&quot;
+    | i in 1..8
+];</code></pre>
+</section></section>
+<section>
+<section id="objetivos-del-curso"
+class="title-slide slide level1 center"
+data-background-image="img/BrownBackground.png">
+<h1 class="center"
+data-background-image="img/BrownBackground.png">Objetivos del curso</h1>
+
+</section>
+<section id="objetivos" class="slide level2">
+<h2>Objetivos</h2>
+<ol>
+<li style="background-color:#99ff99;padding:0.5em" class="fragment">
+Conocer las técnicas de <strong>programación funcional</strong>
+concurrente (<em>con Elixir</em>)
+</li>
+<li style="background-color:#ffcc99;padding:0.5em;margin-top:0.2em" class="fragment">
+Aplicar estas técnicas a <strong>lenguajes imperativos
+<em>mainstream</em></strong> (<em>Java, JavaScript, etc.</em>)
+</li>
+<li style="background-color:#99ccff;padding:0.5em;margin-top:0.2em" class="fragment">
+Utilizar <strong>arquitecturas funcionales</strong> para el desarrollo
+de sistemas web.
+</ol>
+</section>
+<section id="requisitos" class="slide level2">
+<h2>Requisitos</h2>
+<p>Conceptos básicos de:</p>
+<ul style="list-style:none;padding:0;margin:0">
+<li class="check">
+Programación
+</li>
+<li class="check">
+HTML
+</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="pdap-te-gustará-si">PDAP te gustará si…</h3>
+<ul style="list-style:none;padding:0;margin:0" class="fragment">
+<li class="love">
+Te gustan los lenguajes de programación
+</li>
+<li class="love">
+Has cursado PD <em class="fragment">(y te gustó 💃)</em>
+</li>
+<li class="love">
+Quieres aprender nuevas maneras de programar
+</li>
+</ul>
+<h3 id="pdap-no-te-gustará-si">PDAP no te gustará si…</h3>
+<ul style="list-style:none;padding:0;margin:0" class="fragment">
+<li class="monito">
+Tienes alergia a los lenguajes de alto nivel
+</li>
+<li class="monito">
+Eres adicto/a a las micro-optimizaciones
+</li>
+</ul>
+</section></section>
+<section>
+<section id="metodología" class="title-slide slide level1 center"
+data-background-image="img/BrownBackground.png">
+<h1 class="center"
+data-background-image="img/BrownBackground.png">Metodología</h1>
+
+</section>
+<section id="metodología-1" class="slide level2">
+<h2>Metodología</h2>
+<ul>
+<li><p><span class="color_tema"><strong>Teoría</strong></span></p>
+<ul>
+<li><p>Material en el Campus Virtual.</p></li>
+<li><p>No todas las diapositivas se explicarán en clase de teoría;
+algunas de ellas son para estudio individual fuera de clase.</p></li>
+</ul></li>
+<li><p><span class="color_tema"><strong>Práctica</strong></span></p>
+<ul>
+<li><p>Realización de ejercicios en el ordenador</p></li>
+<li><p>Algunos de los ejercicios son entregables al final de clase y
+puntúan para la evaluación continua; otros no.</p></li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="evaluación" class="title-slide slide level1 center"
+data-background-image="img/BrownBackground.png">
+<h1 class="center"
+data-background-image="img/BrownBackground.png">Evaluación</h1>
+
+</section>
+<section id="evaluación-1" class="slide level2">
+<h2>Evaluación</h2>
+<div
+style="display:grid;gap:1em 1em;justify-items:stretch;align-items:start">
+<div class="fragment" style="grid-row:1; grid-column:1">
+<p style="background-color:black;color:white;padding:0px 1em;">
+Modalidad <strong>A</strong>
+</p>
+<ul>
+<li>
+Ejercicios (40 %)
+</li>
+<li>
+Mini-proyecto (40 %)
+</li>
+<li>
+Presentación (20 %)
+</li>
+</ul>
+</div>
+<div class="fragment" style="grid-row:1; grid-column:2">
+<p style="background-color:black;color:white;padding:0px 1em">
+Modalidad <strong>B</strong>
+</p>
+<ul>
+<li>
+Examen (80 %)
+</li>
+<li>
+Mini-proyecto (20 %)
+</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="ejercicios-40" class="slide level2">
+<h2>Ejercicios (40 %)</h2>
+<ul>
+<li><p>En algunas de las sesiones de laboratorio se propondrán
+ejercicios que serán entregables.</p></li>
+<li><p>Para obtener la calificación máxima se requiere entregarlos en
+esa misma sesión.</p>
+<ul>
+<li>Se pueden entregar después de la sesión de laboratorio, pero la
+calificación máxima obtenible será menor.</li>
+</ul></li>
+</ul>
+<div class="info_box">
+<p>Son individuales</p>
+</div>
+</section>
+<section id="mini-proyecto-40" class="slide level2">
+<h2>Mini-proyecto (40 %)</h2>
+<ul>
+<li><p>Desarrollo de un proyecto de tamaño pequeño-mediano integrando
+las herramientas vistas durante el curso.</p></li>
+<li><p>Fecha de entrega: 22 de enero.</p></li>
+<li><p>A mediados de noviembre se expondrán las propuestas de
+proyecto.</p>
+<ul>
+<li>Se admiten propuestas propias de los estudiantes.</li>
+</ul></li>
+</ul>
+<div class="info_box">
+<p>Son individuales</p>
+</div>
+</section>
+<section id="presentación-20" class="slide level2">
+<h2>Presentación (20 %)</h2>
+<ul>
+<li><p>Lista de temas ofertadas por el profesor.</p>
+<ul>
+<li>Se admiten propuestas propias de los estudiantes.</li>
+</ul></li>
+<li><p>Los temas están relacionados, principalmente, con el uso del
+paradigma funcional en lenguajes imperativos (objetivo 2 del
+curso).</p></li>
+<li><p>Fecha de presentaciones: 12 de enero a las 17:00</p></li>
+</ul>
+<div class="info_box">
+<p>Son individuales</p>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="regla-de-oro-para-no-suspender">Regla de oro para no
+suspender</h3>
+<p>En las prácticas y mini-proyecto:</p>
+<div class="info_box fragment">
+<p>No entregues una sola de línea de código cuyo funcionamiento no sepas
+explicar.</p>
+</div>
+<p>En la presentación:</p>
+<div class="info_box fragment">
+<p>No digas una sola frase cuyo significado no sepas explicar.</p>
+</div>
+</section></section>
+<section>
+<section id="software" class="title-slide slide level1 center"
+data-background-image="img/BrownBackground.png">
+<h1 class="center"
+data-background-image="img/BrownBackground.png">Software</h1>
+
+</section>
+<section id="lenguajes-y-entornos-de-desarrollo" class="slide level2">
+<h2>Lenguajes y entornos de desarrollo</h2>
+<div class="columns">
+<div class="column" style="text-align:center">
+<p><img data-src="Intro/Elixir.png" style="width:70.0%" /></p>
+<p><span style="font-size:50%"><a
+href="https://elixir-lang.org/">https://elixir-lang.org/</a></span></p>
+</div><div class="column" style="text-align:center">
+<p><img data-src="Intro/Java.png" style="width:70.0%" /></p>
+<p><span style="font-size:50%"><a
+href="https://www.oracle.com/es/java/">https://www.oracle.com/es/java/</a></span></p>
+</div>
+</div>
+<div class="fragment">
+<div style="text-align:center">
+<p><img data-src="Intro/VSCode.png" style="width:10.0%" /></p>
+<p>Plugin para desarrollo Elixir en VS Code</p>
+<p><span style="font-size:50%"><a
+href="https://marketplace.visualstudio.com/items?itemName=JakeBecker.elixir-ls">https://marketplace.visualstudio.com/items?itemName=JakeBecker.elixir-ls</a></span></p>
+</div>
+</div>
+</section>
+<section id="elixir" class="slide level2">
+<h2>Elixir</h2>
+<ul>
+<li><p>Es un lenguaje de programación <strong>funcional
+concurrente</strong>.</p>
+<ul>
+<li>Al contrario que Haskell, no es un lenguaje funcional puro.</li>
+</ul></li>
+<li><p>Se basa en la máquina virtual de <em>Erlang</em>, que permite
+manejar miles de procesos de manera eficiente.</p></li>
+<li><p>Diseñado para aplicaciones distribuidas y escalables, y sistemas
+de tiempo real.</p></li>
+<li><p>Potente sistema de macros que facilita el uso de
+<em>frameworks</em> y bibliotecas.</p></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p>Utilizado en:</p>
+<ul>
+<li><p><em>WhatsApp</em> (sistema de mensajería en Erlang)</p></li>
+<li><p>Sistema de chat de <em>Discord</em> <a
+href="https://elixir-lang.org/blog/2020/10/08/real-time-communication-at-scale-with-elixir-at-discord/">[+]</a></p></li>
+<li><p><em>Pinterest</em> <a
+href="https://elixirforum.com/t/elixir-saves-pinterest-2-million-year-other-marketing-examples/57909">[+]</a></p></li>
+</ul>
+</section>
+<section id="bibliotecas-de-elixir-más-utilizadas" class="slide level2">
+<h2>Bibliotecas de Elixir más utilizadas</h2>
+<div class="columns">
+<div class="column" style="width:10%">
+<p><img data-src="Intro/Phoenix.png" style="width:90.0%" /> <img
+data-src="Intro/Ecto.png" style="width:90.0%" /></p>
+<p><img data-src="Intro/Nx.png" style="width:90.0%" /></p>
+</div><div class="column" style="width:90%">
+<ul>
+<li><p><strong>Phoenix</strong>: <em>Framework</em> para desarrollo de
+aplicaciones web:</p>
+<p><a
+href="https://www.phoenixframework.org/">https://www.phoenixframework.org/</a></p>
+<p>Según <em>Stack Overflow Developer Survey 2025</em>, framework web
+más <em>admirado</em>.</p></li>
+<li><p><strong>Ecto</strong>: <em>Framework</em> para bases de datos
+relacionales</p>
+<p><a
+href="https://github.com/elixir-ecto/ecto">https://github.com/elixir-ecto/ecto</a></p></li>
+<li><p><strong>Numerical Elixir (Nx)</strong>: Conjunto de bibliotecas
+para cálculo numérico, aprendizaje automático, IA, etc.</p>
+<p><a
+href="https://github.com/elixir-nx/">https://github.com/elixir-nx/</a></p></li>
+</ul>
+</div>
+</div>
+</section></section>
+<section>
+<section id="bibliografía" class="title-slide slide level1 center"
+data-background-image="img/BrownBackground.png">
+<h1 class="center"
+data-background-image="img/BrownBackground.png">Bibliografía</h1>
+
+</section>
+<section id="bibliografía-1" class="slide level2">
+<h2>Bibliografía</h2>
+<div class="columns">
+<div class="column" style="width:75%;">
+<ul>
+<li><p>S. Juric<br/> <em>Elixir in Action (3rd edition)</em><br/>
+Manning publications, 2024</p></li>
+<li><p>D. Thomas<br/> <em>Programming Elixir 1.6</em><br/> The Pragmatic
+Programmers, 2018</p></li>
+</ul>
+</div><div class="column" style="width:25%;">
+<p><img data-src="Intro/ExInAction.png" style="width:60.0%" /></p>
+<p><img
+data-src="https://pragprog.com/titles/elixir16/programming-elixir-1-6/elixir16_hu_f27ca418681ba529.jpg"
+style="width:60.0%" /></p>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="columns">
+<div class="column" style="width:65%">
+<ul>
+<li><p>V. Venkat Subramaniam<br/> <em>Functional Programming in Java
+(2nd edition)</em><br/> The Pragmatic Programmers, 2023</p></li>
+<li><p>M. Vermeulen, R. Bjarnason, P. Chiusano<br/> <em>Functional
+Programming in Kotlin</em><br/> Manning publications, 2021</p></li>
+<li><p>I. Čukić<br/> <em>Functional Programming in C++</em><br/> Manning
+publications, 2018</p></li>
+</ul>
+</div><div class="column" style="width:15%">
+<p><img
+data-src="https://pragprog.com/titles/vsjava2e/functional-programming-in-java-second-edition/vsjava2e-250.jpg"
+style="margin:0px;width:40.0%" /></p>
+<p><img data-src="Intro/FPKotlin.png"
+style="margin:0px;width:40.0%" /></p>
+<p><img data-src="Intro/FPCPP.png" style="margin:0px;width:40.0%" /></p>
+</div>
+</div>
+</section></section>
+    </div>
+  </div>
+
+  <script src="dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="plugin/notes/notes.js"></script>
+  <script src="plugin/search/search.js"></script>
+  <script src="plugin/zoom/zoom.js"></script>
+  <script src="plugin/highlight/highlight.js"></script>
+  <script src="plugin/math/math.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Prints all fragments in their visible states on the same slide 
+        pdfSeparateFragments: false,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'slide',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1600,
+
+        height: 900,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom,
+          // RevealHighlight          
+        ]
+      });
+    </script>
+    </body>
+</html>

@@ -1,0 +1,5 @@
+*.md
+filters/*
+Makefile
+template/*
+PDF/*
