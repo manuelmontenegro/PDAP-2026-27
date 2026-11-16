@@ -1548,15 +1548,19 @@ variables en tiempo de compilación, y detecta expresiones mal formadas
 (p.ej, C++, Java) o inferir los tipos por sí mismo:</p>
 <div class="columns">
 <div class="column">
-<div class="sourceCode" id="cb4"><pre
-class="sourceCode java"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Ejemplo en Java</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">String</span> str <span class="op">=</span> <span class="st">&quot;Hola, mundo&quot;</span><span class="op">;</span>   <span class="co">// Tipo declarado</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="dt">var</span> x <span class="op">=</span> <span class="dv">3</span><span class="op">;</span>                    <span class="co">// Tipo inferido</span></span></code></pre></div>
+<div class="java elixir_block">
+<p><span class="comment">// Ejemplo en Java</span><br><span
+class="type">String</span> str = <span class="string">"Hola,
+mundo"</span>;   <span class="comment">// Tipo
+declarado</span><br><strong>var</strong> x = <span
+class="number">3</span>;                    <span class="comment">//
+Tipo inferido</span></p>
+</div>
 </div><div class="column">
-<div class="sourceCode" id="cb5"><pre
-class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Ejemplo en Haskell</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ot">incr ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span>  <span class="co">-- Tipo declarado</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>incr x <span class="ot">=</span> x <span class="op">+</span> <span class="dv">1</span>      <span class="co">-- (pero puede inferirse)</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Ejemplo en Haskell</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ot">incr ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span>  <span class="co">-- Tipo declarado</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>incr x <span class="ot">=</span> x <span class="op">+</span> <span class="dv">1</span>      <span class="co">-- (pero puede inferirse)</span></span></code></pre></div>
 </div>
 </div></li>
 <li class="fragment"><p>Previene errores en tiempo de ejecución, pero a
@@ -1574,13 +1578,13 @@ Elixir)</em>
 tiempo de ejecución.</p>
 <div class="columns">
 <div class="column">
-<div class="sourceCode" id="cb6"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo en Python</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> x <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>f(<span class="st">&quot;Hola&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo en Python</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> x <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>f(<span class="st">&quot;Hola&quot;</span>)</span></code></pre></div>
 </div><div class="column fragment">
 <pre class="text"><code>Traceback (most recent call last):
   File &quot;...&quot;, line ...
@@ -1742,12 +1746,12 @@ asignado.</li>
 </ul></li>
 <li class="fragment"><p>Son parecidos a los <code>enum</code> de C++ y
 Java:</p>
-<div class="sourceCode" id="cb8"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">enum</span> DiaSemana <span class="op">{</span> LUNES<span class="op">,</span> MARTES<span class="op">,</span> MIERCOLES<span class="op">,</span> JUEVES<span class="op">,</span> <span class="op">...</span> <span class="op">};</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">enum</span> DiaSemana <span class="op">{</span> LUNES<span class="op">,</span> MARTES<span class="op">,</span> MIERCOLES<span class="op">,</span> JUEVES<span class="op">,</span> <span class="op">...</span> <span class="op">};</span></span></code></pre></div>
 <p>y a las constantes de C y C++:</p>
-<div class="sourceCode" id="cb9"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="at">const</span> <span class="dt">int</span> ON <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="at">const</span> <span class="dt">int</span> OFF <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="at">const</span> <span class="dt">int</span> ON <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="at">const</span> <span class="dt">int</span> OFF <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span></code></pre></div>
 <p>pero en Elixir no hay que declarar las constantes de antemano; se
 utilizan directamente.</p></li>
 </ul>
@@ -2187,12 +2191,12 @@ modificadas.</p></li>
 </ul></li>
 <li><p>Sin embargo, los bucles necesitan modificar los valores de las
 variables:</p>
-<div class="sourceCode" id="cb11"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="op">(</span>i <span class="op">&lt;=</span> <span class="dv">10</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  x <span class="op">=</span> x <span class="op">*</span> i<span class="op">;</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="op">(</span>i <span class="op">&lt;=</span> <span class="dv">10</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  x <span class="op">=</span> x <span class="op">*</span> i<span class="op">;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div></li>
 </ul>
 </section>
 <section id="recursión-como-alternativa" class="slide level2">
@@ -2949,13 +2953,13 @@ acumulador.</p></li>
 <li><p>Cualquier bucle de un lenguaje imperativo se puede transformar en
 una función recursiva de cola.</p></li>
 <li><p>Por ejemplo:</p>
-<div class="sourceCode" id="cb12"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> n <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="op">(</span>i <span class="op">&lt;=</span> n<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  x <span class="op">=</span> x <span class="op">*</span> i<span class="op">;</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="cf">return</span> x<span class="op">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> n <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="op">(</span>i <span class="op">&lt;=</span> n<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  x <span class="op">=</span> x <span class="op">*</span> i<span class="op">;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="cf">return</span> x<span class="op">;</span></span></code></pre></div>
 <p>definimos una función con tantos parámetros acumuladores como
 variables intervengan en el cuerpo y en la condición del bucle.</p>
 <div class="elixir elixir_block">
@@ -2965,13 +2969,13 @@ variables intervengan en el cuerpo y en la condición del bucle.</p>
 </section>
 <section class="slide level2">
 
-<div class="sourceCode" id="cb13"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> n <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="op">(</span>i <span class="op">&lt;=</span> n<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  x <span class="op">=</span> x <span class="op">*</span> i<span class="op">;</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="cf">return</span> x<span class="op">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> n <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="op">(</span>i <span class="op">&lt;=</span> n<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  x <span class="op">=</span> x <span class="op">*</span> i<span class="op">;</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="cf">return</span> x<span class="op">;</span></span></code></pre></div>
 <div class="fragment">
 <ul>
 <li>El caso base corresponde a la condición de salida del bucle:</li>
@@ -2998,13 +3002,13 @@ variables tras una iteración</span><br><strong>end</strong></p>
 </section>
 <section class="slide level2">
 
-<div class="sourceCode" id="cb14"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> n <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="op">(</span>i <span class="op">&lt;=</span> n<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  x <span class="op">=</span> x <span class="op">*</span> i<span class="op">;</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="cf">return</span> x<span class="op">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> x <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> i <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> n <span class="op">=</span> <span class="dv">10</span><span class="op">;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="op">(</span>i <span class="op">&lt;=</span> n<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  x <span class="op">=</span> x <span class="op">*</span> i<span class="op">;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  i <span class="op">=</span> i <span class="op">+</span> <span class="dv">1</span><span class="op">;</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="cf">return</span> x<span class="op">;</span></span></code></pre></div>
 <ul>
 <li>La llamada inicial se corresponde con los valores iniciales de las
 variables antes de la primera iteración:</li>
@@ -9252,18 +9256,18 @@ otros tipos de datos, bien sean simples, o bien otros TDA.</p></li>
 <li class="fragment"><p>Sirven para agrupar en una única entidad valores
 de igual o distinto tipo.</p></li>
 <li class="fragment"><p>Por ejemplo, en C++:</p>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Fecha <span class="op">{</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> dia<span class="op">;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> mes<span class="op">;</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> anyo<span class="op">;</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div>
 <div class="sourceCode" id="cb15"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Fecha <span class="op">{</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> dia<span class="op">;</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> mes<span class="op">;</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> anyo<span class="op">;</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div>
-<div class="sourceCode" id="cb16"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">template</span> <span class="op">&lt;</span><span class="kw">typename</span> T<span class="op">,</span> <span class="kw">typename</span> S<span class="op">&gt;</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Pair <span class="op">{</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  T first<span class="op">;</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  S second<span class="op">;</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div></li>
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">template</span> <span class="op">&lt;</span><span class="kw">typename</span> T<span class="op">,</span> <span class="kw">typename</span> S<span class="op">&gt;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> Pair <span class="op">{</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  T first<span class="op">;</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  S second<span class="op">;</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span></code></pre></div></li>
 </ul>
 </section>
 <section id="tipos-producto-2" class="slide level2">
@@ -9632,14 +9636,14 @@ style="font-style: italic;">T<sub>i</sub></span> corresponde.</p></li>
 de los lenguajes funcionales.</p>
 <ul>
 <li class="fragment"><p>Por ejemplo, en OCaml:</p>
-<div class="sourceCode" id="cb17"><pre
-class="sourceCode ocaml"><code class="sourceCode ocaml"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> figura =</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  | Rectangulo</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  | Circulo</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  | Segmento</span></code></pre></div></li>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode ocaml"><code class="sourceCode ocaml"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> figura =</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  | Rectangulo</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  | Circulo</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  | Segmento</span></code></pre></div></li>
 <li class="fragment"><p>En Haskell</p>
-<div class="sourceCode" id="cb18"><pre
-class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Figura</span> <span class="ot">=</span> <span class="dt">Rectangulo</span> <span class="op">|</span> <span class="dt">Circulo</span> <span class="op">|</span> <span class="dt">Segmento</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Figura</span> <span class="ot">=</span> <span class="dt">Rectangulo</span> <span class="op">|</span> <span class="dt">Circulo</span> <span class="op">|</span> <span class="dt">Segmento</span></span></code></pre></div>
 <p>Un valor de tipo <code>Figura</code> solamente puede ser
 <code>Rectangulo</code>, <code>Circulo</code> o
 <code>Segmento</code>.</p></li>
@@ -9653,19 +9657,19 @@ class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb18-1"><a
 un tipo producto.</p>
 <ul>
 <li><p>Por ejemplo, en OCaml:</p>
-<div class="sourceCode" id="cb19"><pre
-class="sourceCode ocaml"><code class="sourceCode ocaml"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> punto = ...</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> figura =</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  | Rectangulo <span class="kw">of</span> { centro: punto, alto: <span class="dt">float</span>, ancho: <span class="dt">float</span> }</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  | Circulo <span class="kw">of</span> { centro: punto, radio: <span class="dt">float</span> }</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  | Segmento <span class="kw">of</span> { desde: punto, hasta: punto }</span></code></pre></div></li>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode ocaml"><code class="sourceCode ocaml"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> punto = ...</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> figura =</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  | Rectangulo <span class="kw">of</span> { centro: punto, alto: <span class="dt">float</span>, ancho: <span class="dt">float</span> }</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  | Circulo <span class="kw">of</span> { centro: punto, radio: <span class="dt">float</span> }</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  | Segmento <span class="kw">of</span> { desde: punto, hasta: punto }</span></code></pre></div></li>
 <li><p>En Haskell:</p>
-<div class="sourceCode" id="cb20"><pre
-class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">Punto</span> <span class="ot">=</span> <span class="op">...</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Figura</span> <span class="ot">=</span> <span class="dt">Rectangulo</span> <span class="dt">Punto</span> <span class="dt">Float</span> <span class="dt">Float</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>            <span class="op">|</span> <span class="dt">Circulo</span> <span class="dt">Punto</span> <span class="dt">Float</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>            <span class="op">|</span> <span class="dt">Segmento</span> <span class="dt">Punto</span> <span class="dt">Punto</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">Punto</span> <span class="ot">=</span> <span class="op">...</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Figura</span> <span class="ot">=</span> <span class="dt">Rectangulo</span> <span class="dt">Punto</span> <span class="dt">Float</span> <span class="dt">Float</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>            <span class="op">|</span> <span class="dt">Circulo</span> <span class="dt">Punto</span> <span class="dt">Float</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>            <span class="op">|</span> <span class="dt">Segmento</span> <span class="dt">Punto</span> <span class="dt">Punto</span></span></code></pre></div></li>
 </ul></li>
 </ul>
 </section>
@@ -9829,21 +9833,23 @@ class="slide level2 subsection center">
 </section>
 <section id="ejemplo-figuras-en-java" class="slide level2">
 <h2>Ejemplo: figuras en Java</h2>
-<div class="sourceCode" id="cb22"><pre
-class="sourceCode java"><code class="sourceCode java"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">interface</span> Figura <span class="op">{</span> <span class="co">/* ... */</span> <span class="op">}</span> </span></code></pre></div>
-<div class="sourceCode" id="cb23"><pre
-class="sourceCode java"><code class="sourceCode java"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> Rectangulo <span class="kw">implements</span> Figura <span class="op">{</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">private</span> Punto posicion<span class="op">;</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">private</span> <span class="dt">double</span> alto<span class="op">;</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">private</span> <span class="dt">double</span> ancho<span class="op">;</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">/* ... */</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<div class="sourceCode" id="cb24"><pre
-class="sourceCode java"><code class="sourceCode java"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> Circulo <span class="kw">implements</span> Figura <span class="op">{</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">private</span> Punto posicion<span class="op">;</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">private</span> <span class="dt">double</span> radio<span class="op">;</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">/* ... */</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="java elixir_block">
+<p><strong>public</strong> <strong>interface</strong> Figura { /* ... */
+}</p>
+</div>
+<div class="java elixir_block">
+<p><strong>public</strong> <strong>class</strong> Rectangulo
+<strong>implements</strong> Figura {<br>  <strong>private</strong> Punto
+posicion;<br>  <strong>private</strong> <span class="type">double</span>
+alto;<br>  <strong>private</strong> <span class="type">double</span>
+ancho;<br>  /* ... */<br>}</p>
+</div>
+<div class="java elixir_block">
+<p><strong>public</strong> <strong>class</strong> Circulo
+<strong>implements</strong> Figura {<br>  <strong>private</strong> Punto
+posicion;<br>  <strong>private</strong> <span class="type">double</span>
+radio;<br>  /* ... */<br>}</p>
+</div>
 </section>
 <section id="implementación-de-operaciones" class="slide level2">
 <h2>Implementación de operaciones</h2>
@@ -9858,19 +9864,19 @@ abstracto que se sobreescriba en cada alternativa.</li>
 </section>
 <section class="slide level2">
 
-<div class="sourceCode" id="cb25"><pre
-class="sourceCode java"><code class="sourceCode java"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">interface</span> Figura <span class="op">{</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">public</span> <span class="dt">double</span> <span class="fu">area</span><span class="op">();</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> </span></code></pre></div>
-<div class="sourceCode" id="cb26"><pre
-class="sourceCode java"><code class="sourceCode java"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">class</span> Rectangulo <span class="kw">implements</span> Figura <span class="op">{</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">/* ... */</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">@Override</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">public</span> <span class="dt">double</span> <span class="fu">area</span><span class="op">()</span> <span class="op">{</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ancho <span class="op">*</span> alto<span class="op">;</span></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> </span></code></pre></div>
+<div class="java elixir_block">
+<p><strong>public</strong> <strong>interface</strong> Figura
+{<br>  <strong>public</strong> <span class="type">double</span>
+area();<br>}</p>
+</div>
+<div class="java elixir_block">
+<p><strong>public</strong> <strong>class</strong> Rectangulo
+<strong>implements</strong> Figura {<br>  /* ... <em>/<br><br>  <span
+class="comment"><span class="citation"
+data-cites="Override">@Override</span></span><br>  <strong>public</strong>
+<span class="type">double</span> area() {<br>    <strong>return</strong>
+ancho </em> alto;<br>  }<br>}</p>
+</div>
 </section>
 <section id="comparativa" class="slide level2">
 <h2>Comparativa</h2>
@@ -10112,8 +10118,8 @@ class="slide level2 subsection center">
 <p>La función no ha terminado con éxito</p></li>
 </ul></li>
 <li><p>Equivale al tipo <code>Maybe</code> de <em>Haskell</em>:</p>
-<div class="sourceCode" id="cb27"><pre
-class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Maybe</span> a <span class="ot">=</span> <span class="dt">Just</span> a <span class="op">|</span> <span class="dt">Nothing</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb21"><pre
+class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Maybe</span> a <span class="ot">=</span> <span class="dt">Just</span> a <span class="op">|</span> <span class="dt">Nothing</span></span></code></pre></div></li>
 </ul>
 </section>
 <section id="ejemplos-16" class="slide level2">
@@ -11312,8 +11318,8 @@ class="atom">:</span> <span class="number">2</span> * x + y</p>
 innecesaria</strong> de expresiones.</p></li>
 <li><p>Por ejemplo, si definimos la función <code>cond</code> anterior
 en Haskell:</p>
-<div class="sourceCode" id="cb31"><pre
-class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>cond b x y <span class="ot">=</span> <span class="kw">if</span> b <span class="kw">then</span> x <span class="kw">else</span> y</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre
+class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>cond b x y <span class="ot">=</span> <span class="kw">if</span> b <span class="kw">then</span> x <span class="kw">else</span> y</span></code></pre></div>
 <p>La aplicación <code>cond True 1 (1/0)</code> se evalúa a
 <code>1</code> sin producir ningún error, porque no necesita evaluar
 <code>1/0</code>.</p></li>
